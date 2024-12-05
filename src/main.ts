@@ -28,7 +28,7 @@ let document_name = "my-document_name"
 const yDoc = new Y.Doc();
 
 const provider = new YPartyKitProvider(
-  "192.168.8.107:1999",
+  "localhost:1999",
   document_name,
   yDoc
 );
