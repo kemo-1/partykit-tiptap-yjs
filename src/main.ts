@@ -5,9 +5,6 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <div class="element"></div>
 `
 
-import Document from '@tiptap/extension-document'
-import Paragraph from '@tiptap/extension-paragraph'
-import Text from '@tiptap/extension-text'
 
 import { Editor } from '@tiptap/core'
 import StarterKit from '@tiptap/starter-kit'
@@ -17,7 +14,7 @@ import CollaborationCursor from "@tiptap/extension-collaboration-cursor";
 
 import YPartyKitProvider from "y-partykit/provider";
 import * as Y from "yjs";
-
+import { IndexeddbPersistence } from 'y-indexeddb'
 
 // 5 nice colors
 const colours = ["#ffa5a5", "#f9ffa5", "#a9ffa5", "#a5e8ff", "#dfa5ff"];
@@ -26,24 +23,23 @@ const colours = ["#ffa5a5", "#f9ffa5", "#a9ffa5", "#a5e8ff", "#dfa5ff"];
 // This is just for demonstration purposes
 const MY_COLOR = colours[Math.floor(Math.random() * colours.length)];
 
-
+let document_name = "my-document_name"
 
 const yDoc = new Y.Doc();
 
 const provider = new YPartyKitProvider(
-  "localhost:1999",
-  "my-document-name",
+  "192.168.8.107:1999",
+  document_name,
   yDoc
 );
+new IndexeddbPersistence(document_name, provider.doc)
 
 const editor = new Editor({
   element: document.querySelector('.element')!,
   extensions: [StarterKit.configure({
     history: false, // Disables default history to use Collaboration's history management
   }),
-    Document,
-    Paragraph,
-    Text,
+
   Collaboration.configure({
     document: provider.doc, // Configure Y.Doc for collaboration
   }),
