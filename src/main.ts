@@ -1,12 +1,10 @@
 import './style.css'
 
-// import { setupCounter } from './counter.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <div class="element"></div>
 `
 
-// setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
 import Document from '@tiptap/extension-document'
 import Paragraph from '@tiptap/extension-paragraph'
 import Text from '@tiptap/extension-text'
@@ -17,15 +15,12 @@ import StarterKit from '@tiptap/starter-kit'
 import Collaboration from '@tiptap/extension-collaboration'
 import CollaborationCursor from "@tiptap/extension-collaboration-cursor";
 
-
-import { TiptapCollabProvider } from '@hocuspocus/provider'
-
 import YPartyKitProvider from "y-partykit/provider";
 import * as Y from "yjs";
 
 
-// 5 bright colors
-const colours = ["#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF"];
+// 5 nice colors
+const colours = ["#ffa5a5", "#f9ffa5", "#a9ffa5", "#a5e8ff", "#dfa5ff"];
 
 // Pick a random color from the list
 // This is just for demonstration purposes
